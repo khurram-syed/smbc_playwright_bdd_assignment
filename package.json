@@ -1,0 +1,22 @@
+{
+  "name": "anagramcheckerplaywright",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js",
+    "test:smoke": "cucumber-js --tags @smoke",
+    "test:parallel": "cucumber-js --parallel 2"
+  },
+  "keywords": [],
+  "author": "KSyed",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^25.0.6",
+    "ts-node": "^10.9.2",
+    "@cucumber/cucumber": "^12.4.0",
+    "allure-commandline": "^2.36.0",
+    "allure-cucumberjs": "^3.4.3"
+  }
+}
