@@ -36,7 +36,8 @@ jobs:
       - name: Generate Allure report
         if: always()
         run: |
-          npm run allure:report
+          mkdir -p allure-results
+          npx allure generate allure-results -o allure-report --clean || true
 
       # 6-Upload Allure report as artifact 
       - name: Upload Allure report artifact
