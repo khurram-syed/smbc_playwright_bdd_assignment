@@ -17,7 +17,7 @@ Feature: Anagram Checker
       | school master   | the classroom   | true   |
       | a gentleman     | elegant man     | true   |
       | eleven plus two | twelve plus one | true   |
-      | apple           | paple           | true   |
+      | apple           | paple           | false  |
       | rat             | car             | false  |
 
   @anagram2

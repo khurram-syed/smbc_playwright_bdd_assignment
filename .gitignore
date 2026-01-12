@@ -18,6 +18,8 @@ yarn-error.log*
 # ===============================
 allure-results/
 allure-report/
+reports/
+reports/*.html
 playwright-report/
 test-results/
 cucumber-report/
@@ -44,6 +46,7 @@ coverage/
 Thumbs.db
 
 # VS Code
+.vscode
 .vscode/*
 !.vscode/launch.json
 !.vscode/extensions.json
