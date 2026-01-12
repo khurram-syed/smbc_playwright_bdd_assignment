@@ -32,37 +32,21 @@ jobs:
       - name: Run Cucumber tests
         run: npm test
 
-      # 5-Generate Allure HTML report
-      - name: Generate Allure report
-        if: always()
-        run: |
-          mkdir -p allure-results
-          npx allure generate allure-results -o allure-report --clean || true
-
-      # 6-Upload Allure report as artifact 
-      - name: Upload Allure report artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-report
-          path: allure-report
-          retention-days: 30
-
-      # 7-Deploy Allure report to GitHub Pages
-      - name: Deploy Allure report to GitHub Pages
+      # 5-Deploy Cucumber report to gh-pages
+      - name: Deploy report to GitHub Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: allure-report
+          publish_dir: reports
 
-      # 8-Add Allure report link to workflow summary ⭐
-      - name: Add Allure report link to summary
+      # 6-Add Cucumber report link to GitHub Actions summary ⭐
+      - name: Add Cucumber report link to workflow summary
         if: always()
         run: |
-          echo "## 📊 Allure Test Report" >> $GITHUB_STEP_SUMMARY
+          echo "## 🥒 Cucumber BDD Test Report" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "🔗 **View Report:** https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" >> $GITHUB_STEP_SUMMARY
+          echo "🔗 **View HTML Report:** https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "⬇️ You can also download the report from the Artifacts section." >> $GITHUB_STEP_SUMMARY
+          echo "📌 Report is generated automatically and deployed to the \`gh-pages\` branch." >> $GITHUB_STEP_SUMMARY
